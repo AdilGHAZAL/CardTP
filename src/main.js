@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var InMemoryStorage_1 = require("./services/InMemoryStorage");
+var Cart_1 = require("./services/Cart");
+var Product_1 = require("./services/Product");
+var storage = new InMemoryStorage_1.InMemoryStorage();
+var cart = new Cart_1.Cart(storage);
+var product1 = new Product_1.Product("Laptop", 1500);
+var product2 = new Product_1.Product("Smartphone", 800);
+cart.addProduct(product1);
+cart.addProduct(product2);
+console.log("Produits dans le panier:", cart.listProducts());
+console.log("Total:", cart.getTotalPrice());
+cart.removeProduct(product1);
+console.log("Produits dans le panier après suppression:", cart.listProducts());
+console.log("Total après suppression:", cart.getTotalPrice());
